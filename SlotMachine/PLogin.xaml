@@ -1,0 +1,17 @@
+﻿<Window x:Name="Login" x:Class="SlotMachine.PLogin"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:SlotMachine"
+        mc:Ignorable="d"
+       Title="CARD ID LOGIN - PBS" Height="280" Width="500" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" Closed="Login_Closed">
+    <Window.Background>
+        <ImageBrush ImageSource="/loginBG.png"/>
+    </Window.Background>
+    <Grid>
+        <TextBox x:Name="tbCardID" HorizontalAlignment="Left" Margin="243,157,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="214" Height="22" FontFamily="Rockwell Extra Bold" FontSize="15" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+        <Label Content="CARD ID" HorizontalAlignment="Left" Margin="308,129,0,0" VerticalAlignment="Top" FontFamily="Rockwell Extra Bold" Foreground="White" FontSize="15"/>
+        <Button Content="Login" HorizontalAlignment="Left" Margin="305,191,0,0" VerticalAlignment="Top" Width="90" Click="Button_Click" FontFamily="Rockwell Extra Bold" FontSize="15"/>
+    </Grid>
+</Window>

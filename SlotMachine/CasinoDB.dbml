@@ -1,0 +1,98 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="Grp1-Casino" Class="CasinoDBDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="AppSettings" ConnectionString="Data Source=charles.ceeszjwt7h7h.ap-southeast-1.rds.amazonaws.com;Initial Catalog=Grp1-Casino;User ID=admin;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False" SettingsObjectName="SlotMachine.Properties.Settings" SettingsPropertyName="Grp1_CasinoConnectionString" Provider="System.Data.SqlClient" />
+  <Function Name="dbo.uspCheckActive" Method="uspCheckActive">
+    <Parameter Name="UserID" Parameter="userID" Type="System.String" DbType="NChar(13)" />
+    <ElementType Name="uspCheckActiveResult">
+      <Column Name="ActivePlayer" Type="System.String" DbType="NChar(13)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.uspGetActiveMachines" Method="uspGetActiveMachines">
+    <ElementType Name="uspGetActiveMachinesResult">
+      <Column Name="MachineID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ActivePlayer" Type="System.String" DbType="NChar(13)" CanBeNull="true" />
+      <Column Name="UserName" Type="System.String" DbType="NVarChar(101) NOT NULL" CanBeNull="false" />
+      <Column Name="ActiveGame" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="GameName" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.uspGetAllHistory" Method="uspGetAllHistory">
+    <ElementType Name="uspGetAllHistoryResult">
+      <Column Name="TransactionID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="UserID" Type="System.String" DbType="NChar(13) NOT NULL" CanBeNull="false" />
+      <Column Name="MachineID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="GameID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Spent" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Winnings" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="TransactionDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.uspGetCurrentLoss" Method="uspGetCurrentLoss">
+    <Parameter Name="UserID" Parameter="userID" Type="System.String" DbType="NChar(13)" />
+    <ElementType Name="uspGetCurrentLossResult">
+      <Column Name="CurrentLoss" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.uspGetUserName" Method="uspGetUserName">
+    <Parameter Name="UserID" Parameter="userID" Type="System.String" DbType="NChar(13)" />
+    <ElementType Name="uspGetUserNameResult">
+      <Column Name="Name" Type="System.String" DbType="NVarChar(101) NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.uspLatestUser" Method="uspLatestUser">
+    <ElementType Name="uspLatestUserResult">
+      <Column Name="" Member="Column1" Type="System.String" DbType="NChar(13)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.uspLogin" Method="uspLogin">
+    <Parameter Name="UserID" Parameter="userID" Type="System.String" DbType="NChar(13)" />
+    <ElementType Name="uspLoginResult">
+      <Column Name="UserID" Type="System.String" DbType="NChar(13) NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.uspNewUser" Method="uspNewUser">
+    <Parameter Name="UserID" Parameter="userID" Type="System.String" DbType="NChar(13)" />
+    <Parameter Name="LastName" Parameter="lastName" Type="System.String" DbType="NVarChar(50)" />
+    <Parameter Name="FirstName" Parameter="firstName" Type="System.String" DbType="NVarChar(50)" />
+    <Parameter Name="Birthday" Parameter="birthday" Type="System.DateTime" DbType="Date" />
+    <Parameter Name="Address" Parameter="address" Type="System.String" DbType="NVarChar(200)" />
+    <Parameter Name="Email" Parameter="email" Type="System.String" DbType="NVarChar(100)" />
+    <Parameter Name="ContactNumber" Parameter="contactNumber" Type="System.String" DbType="NChar(11)" />
+    <Parameter Name="MemberSince" Parameter="memberSince" Type="System.DateTime" DbType="Date" />
+    <Parameter Name="Status" Parameter="status" Type="System.Boolean" DbType="Bit" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.uspRetrieveBalance" Method="uspRetrieveBalance">
+    <Parameter Name="UserID" Parameter="userID" Type="System.String" DbType="NChar(13)" />
+    <ElementType Name="uspRetrieveBalanceResult">
+      <Column Name="UserBalance" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.uspTransact" Method="uspTransact">
+    <Parameter Name="UserID" Parameter="userID" Type="System.String" DbType="NChar(13)" />
+    <Parameter Name="MachineID" Parameter="machineID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="GameID" Parameter="gameID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="Spent" Parameter="spent" Type="System.Int32" DbType="Int" />
+    <Parameter Name="Winnings" Parameter="winnings" Type="System.Int32" DbType="Int" />
+    <Parameter Name="Result" Parameter="result" Type="System.Boolean" DbType="Bit" />
+    <Parameter Name="Details" Parameter="details" Type="System.String" DbType="NVarChar(MAX)" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.uspUpdateCurrentLoss" Method="uspUpdateCurrentLoss">
+    <Parameter Name="UserID" Parameter="userID" Type="System.String" DbType="NChar(13)" />
+    <Parameter Name="Change" Parameter="change" Type="System.Boolean" DbType="Bit" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.uspUpdateMachineStatus" Method="uspUpdateMachineStatus">
+    <Parameter Name="MachineID" Parameter="machineID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="Status" Parameter="status" Type="System.Boolean" DbType="Bit" />
+    <Parameter Name="UserID" Parameter="userID" Type="System.String" DbType="NChar(13)" />
+    <Parameter Name="GameID" Parameter="gameID" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.uspCheckActive2" Method="uspCheckActive2">
+    <Parameter Name="MachineID" Parameter="machineID" Type="System.Int32" DbType="Int" />
+    <ElementType Name="uspCheckActive2Result">
+      <Column Name="MachineID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+</Database>
