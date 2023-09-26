@@ -3,7 +3,7 @@
 <ul>
   <li>Developed an animated Slot Machine game with C# and WPF</li>
   <li>Integrated with independently programmed games into a virtual casino with a central SQL database</li>
-  <li>Game sound effects</li>
+  <li>Game sound effects included</li>
 </ul>
 
 <strong>Tools Used:</strong>
